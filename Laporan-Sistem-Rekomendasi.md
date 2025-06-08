@@ -1,4 +1,10 @@
-# Laporan Proyek Machine Learning - Nama Anda
+# Laporan Proyek Machine Learning Terapan | Sistem Rekomendasi Film
+
+
+**Disusun oleh : Irfan Rizadi**
+
+Ini adalah proyek final untuk memenuhi submission Dicoding Kelas Machine Learning Terapan.
+Proyek ini membangun model machine learning yang dapat merekomendasikan film
 
 ## Project Overview
 Pada bagian ini, akan dijelaskan latar belakang yang relevan dengan proyek sistem rekomendasi film ini. Proyek ini berfokus pada pengembangan sistem rekomendasi untuk membantu pengguna menemukan film yang sesuai dengan preferensi mereka.
@@ -10,6 +16,7 @@ Proyek ini memanfaatkan **dataset MovieLens ml-latest-small**. Dataset ini beras
 Penggunaan dataset MovieLens ini relevan karena MovieLens sendiri adalah sumber data untuk riset di bidang sistem rekomendasi. Untuk mengakui penggunaan dataset ini dalam publikasi, disarankan untuk mengutip makalah berikut: F. Maxwell Harper dan Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4: 19:1–19:19.
 
 **Referensi:**
+
  F. Maxwell Harper dan Joseph A. Konstan. (2015). The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS), 5(4), 19:1–19:19.
 
 Tersedia di: [https://dl.acm.org/doi/10.1145/2827872](https://dl.acm.org/doi/10.1145/2827872)
@@ -88,7 +95,7 @@ Analisis ini berfokus pada distribusi dan karakteristik masing-masing variabel s
 
 *   **Distribusi Genre Film**:
     * ![Distribusi Genre Film](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/genre.png?raw=true)
-    *   **Drama** adalah genre film yang paling banyak diproduksi, diikuti oleh **Comedy** dan **Thriller**. Hal ini mengindikasikan bahwa kedua genre tersebut sangat dominan dalam industri perfilman.
+    *   **Drama** adalah genre film yang paling banyak diproduksi, diikuti oleh **Comedy**, **Action**,  dan **Thriller**. Hal ini mengindikasikan bahwa genre tersebut sangat dominan dalam industri perfilman.
     *   Genre seperti Action, Romance, Crime, Adventure, dan Horror juga memiliki jumlah film yang cukup banyak, berkisar antara 1.000 hingga 2.000 film.
     *   Genre seperti Film-Noir, IMAX, Western, dan Musical memiliki jumlah film yang relatif sedikit (di bawah 500 film), kemungkinan karena pasar yang lebih spesifik atau *niche*.
 
@@ -96,13 +103,13 @@ Analisis ini berfokus pada distribusi dan karakteristik masing-masing variabel s
     * ![Distribusi Tahun Rilis Film](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/tahun.png?raw=true)
     *   Pada awal abad ke-20 (1900-1950), jumlah film yang dirilis masih sedikit dan mengalami pertumbuhan lambat.
     *   Setelah tahun 1950, terutama mulai 1970-an, terjadi peningkatan signifikan dalam jumlah film yang dirilis setiap tahunnya.
-    *   Produksi film mencapai puncaknya pada rentang **1995-2010**, dengan sekitar 800-900 film per tahun.
+    *   Produksi film mencapai puncaknya pada rentang **1995-2010**, dengan sekitar 300-450 film per tahun.
     *   Terlihat adanya tren penurunan jumlah film yang dirilis setiap tahunnya setelah 2005-2010, dan penurunan drastis terlihat setelah tahun **2020**, yang mungkin disebabkan oleh pandemi COVID-19.
     *   Visualisasi ini membantu memahami evolusi industri film secara historis dan peran penting platform distribusi modern.
 
 *   **Distribusi Rating Film**:
     * ![DistribusiRating Film](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/rating.png?raw=true)
-    *   Rata-rata rating keseluruhan adalah sekitar **3.53**. Rating **4.0** adalah yang paling umum, dengan lebih dari 25.000 entri.
+    *   Rata-rata rating keseluruhan adalah sekitar **3.53**. Rating **4.0** adalah yang paling umum, dengan jumblah hampir menyentuh sekitar 25.000 entri.
     *   Rating 3.0 dan 5.0 juga memiliki frekuensi tinggi.
     *   Mayoritas rating cenderung bersifat **positif** (antara 3 hingga 5), menunjukkan bahwa sebagian besar pengguna cukup puas dengan film yang mereka tonton.
 
@@ -236,6 +243,44 @@ Pendekatan ini merekomendasikan item (film) yang **serupa dengan apa yang disuka
     *   Skor kemiripan konten dari film yang disukai pengguna dihitung dengan semua film lainnya.
     *   Film-film yang belum pernah ditonton pengguna, namun memiliki skor kemiripan tertinggi, akan direkomendasikan.
     *   **Contoh Output:** Untuk *User 1*, rekomendasi *top-N* bisa mencakup "Little Women (1994)" dengan skor kemiripan tinggi.
+
+*   **Hasil *Top-N Recommendation* untuk Content-Based Filtering:**
+    
+    **User 1 - Top 5 Recommendations:**
+    1. Little Women (1994) (Score: 64.380)
+    2. Philadelphia (1993) (Score: 64.380)
+    3. Sling Blade (1996) (Score: 64.380)
+    4. Cookie's Fortune (1999) (Score: 60.666)
+    5. Star Trek: First Contact (1996) (Score: 60.388)
+
+    **User 2 - Top 5 Recommendations:**
+    1. Nightcrawler (2014) (Score: 5.620)
+    2. Elite Squad: The Enemy Within (Tropa de Elite 2 - O Inimigo Agora É Outro) (2010) (Score: 5.463)
+    3. Argo (2012) (Score: 5.207)
+    4. 127 Hours (2010) (Score: 5.031)
+    5. Elite Squad (Tropa de Elite) (2007) (Score: 5.028)
+
+    **User 3 - Top 5 Recommendations:**
+    1. Spawn (1997) (Score: 18.588)
+    2. Escape from New York (1981) (Score: 18.445)
+    3. Abyss, The (1989) (Score: 18.445)
+    4. Jurassic Park (1993) (Score: 18.084)
+    5. Star Trek: First Contact (1996) (Score: 18.084)
+
+    **User 4 - Top 5 Recommendations:**
+    1. Little Women (1994) (Score: 65.396)
+    2. Sling Blade (1996) (Score: 65.396)
+    3. Philadelphia (1993) (Score: 65.396)
+    4. Immortal Beloved (1994) (Score: 59.478)
+    5. Friday (1995) (Score: 57.039)
+
+    **User 5 - Top 5 Recommendations:**
+    1. Sling Blade (1996) (Score: 11.187)
+    2. Philadelphia (1993) (Score: 11.187)
+    3. Cookie's Fortune (1999) (Score: 10.121)
+    4. Immortal Beloved (1994) (Score: 10.047)
+    5. Boyz N the Hood (1991) (Score: 9.125)
+
 *   **Kelebihan dan Kekurangan:**
     *   **Kelebihan:**
         *   **Baik untuk Pengguna Baru:** Dapat merekomendasikan film kepada pengguna baru karena tidak memerlukan riwayat interaksi yang banyak, hanya perlu mengetahui film apa yang mereka tonton.
@@ -258,6 +303,44 @@ Pendekatan ini merekomendasikan item (film) kepada pengguna berdasarkan **pola k
     *   Model memprediksi rating untuk film-film yang belum ditonton oleh pengguna target.
     *   Film-film dengan **prediksi rating tertinggi** akan direkomendasikan.
     *   **Contoh Output:** Untuk *User 1*, rekomendasi *top-N* bisa mencakup "Twelve Monkeys (a.k.a. 12 Monkeys) (1995)" dengan prediksi rating 5.0.
+
+*   **Hasil *Top-N Recommendation* untuk Collaborative Filtering:**
+    
+    **User 1 - Top 5 Recommendations:**
+    1. Twelve Monkeys (a.k.a. 12 Monkeys) (1995) (Predicted Rating: 5.00)
+    2. Shawshank Redemption, The (1994) (Predicted Rating: 5.00)
+    3. Wallace & Gromit: The Best of Aardman Animation (1996) (Predicted Rating: 5.00)
+    4. Philadelphia Story, The (1940) (Predicted Rating: 5.00)
+    5. Good Will Hunting (1997) (Predicted Rating: 5.00)
+
+    **User 2 - Top 5 Recommendations:**
+    1. Godfather, The (1972) (Predicted Rating: 4.63)
+    2. Star Wars: Episode VI - Return of the Jedi (1983) (Predicted Rating: 4.59)
+    3. Princess Bride, The (1987) (Predicted Rating: 4.52)
+    4. Star Wars: Episode IV - A New Hope (1977) (Predicted Rating: 4.51)
+    5. Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1964) (Predicted Rating: 4.50)
+
+    **User 3 - Top 5 Recommendations:**
+    1. Pirates of the Caribbean: The Curse of the Black Pearl (2003) (Predicted Rating: 2.88)
+    2. Ronin (1998) (Predicted Rating: 2.78)
+    3. Harold and Maude (1971) (Predicted Rating: 2.78)
+    4. Kiss Kiss Bang Bang (2005) (Predicted Rating: 2.71)
+    5. Boondock Saints, The (2000) (Predicted Rating: 2.68)
+
+    **User 4 - Top 5 Recommendations:**
+    1. Battlestar Galactica (2003) (Predicted Rating: 4.72)
+    2. Wallace & Gromit: The Wrong Trousers (1993) (Predicted Rating: 4.63)
+    3. Persepolis (2007) (Predicted Rating: 4.57)
+    4. Sting, The (1973) (Predicted Rating: 4.57)
+    5. Patton (1970) (Predicted Rating: 4.57)
+
+    **User 5 - Top 5 Recommendations:**
+    1. Wallace & Gromit: The Best of Aardman Animation (1996) (Predicted Rating: 4.49)
+    2. Psycho (1960) (Predicted Rating: 4.45)
+    3. Monty Python and the Holy Grail (1975) (Predicted Rating: 4.43)
+    4. Jaws (1975) (Predicted Rating: 4.41)
+    5. Army of Darkness (1993) (Predicted Rating: 4.41)
+
 *   **Kelebihan dan Kekurangan:**
     *   **Kelebihan:**
         *   **Mampu Menangkap Pola Kompleks:** Mampu menangkap pola preferensi pengguna yang kompleks dan tidak mudah dijelaskan oleh atribut konten saja.
@@ -271,35 +354,100 @@ Pendekatan ini merekomendasikan item (film) kepada pengguna berdasarkan **pola k
 **Perbandingan Metode Rekomendasi:**
 Kedua metode, *Content-Based Filtering* dan *Collaborative Filtering*, memiliki kelebihan dan kekurangannya masing-masing dan **saling melengkapi**. *Content-Based Filtering* ideal untuk pengguna baru atau ketika ingin merekomendasikan konten yang sangat spesifik, sementara *Collaborative Filtering* unggul dalam mengeksplorasi film populer di kalangan pengguna serupa.
 
-## Evaluation
-Bagian ini bertujuan untuk **menyebutkan metrik evaluasi yang digunakan** dan **menjelaskan hasil proyek berdasarkan metrik evaluasi tersebut**. Metrik evaluasi yang dipilih harus **sesuai dengan konteks data, pernyataan masalah, dan solusi yang diinginkan**. Penting juga untuk **menjelaskan formula metrik dan cara kerjanya**.
+**Analisis Hasil *Top-N Recommendations*:**
+Berdasarkan hasil implementasi kedua metode pada 5 pengguna sampel, dapat diamati beberapa pola menarik:
 
-Dalam konteks proyek sistem rekomendasi ini, yang menyajikan *top-N recommendation* sebagai *output*, evaluasi dapat berfokus pada seberapa efektif model dalam memberikan rekomendasi yang relevan kepada pengguna. Meskipun demikian, berdasarkan sumber `notebook.pdf` yang diberikan, bagian "Evaluation" lebih banyak membahas perbandingan kualitatif antara dua pendekatan sistem rekomendasi yang digunakan, yaitu *Content-Based Filtering* (CBF) dan *Collaborative Filtering* (CF), serta kelebihan dan kekurangan masing-masing, dibandingkan menyajikan hasil metrik evaluasi kuantitatif spesifik (seperti RMSE, Precision@K, Recall@K) dan formulanya.
+1. **Content-Based Filtering** menghasilkan rekomendasi yang sangat konsisten untuk pengguna dengan preferensi serupa (User 1 dan User 4 mendapat rekomendasi yang hampir identik), menunjukkan bahwa sistem berhasil menangkap kesamaan profil konten.
 
-**Perbandingan Metode Rekomendasi (Kualitatif)**
-Kedua metode rekomendasi ini **saling melengkapi** dan memiliki karakteristik yang berbeda.
+2. **Collaborative Filtering** memberikan variasi rekomendasi yang lebih beragam antar pengguna, dengan prediksi rating yang bervariasi dari 2.68 hingga 5.00, menunjukkan adaptabilitas model terhadap pola preferensi yang berbeda-beda.
 
-**1. Content-Based Filtering (CBF)**
-*   **Kelebihan:**
-    *   Sangat **cocok untuk pengguna baru** (*new users*) karena tidak tergantung pada riwayat interaksi pengguna lain.
-    *   Mampu **menangkap preferensi konten spesifik** dari pengguna.
-    *   Dapat merekomendasikan film bahkan jika **hanya mengetahui film yang ditonton** oleh pengguna.
-    *   **Tidak terdampak *cold start* pada item** baru karena bergantung pada atribut film.
-*   **Kekurangan:**
-    *   Cenderung **kurang eksploratif**, artinya sering menyajikan film yang sangat mirip dengan apa yang sudah disukai pengguna, sehingga kurang memperkenalkan variasi baru.
-    *   Rentan terhadap ***overfitting*** jika fitur konten kurang beragam.
+3. **Diversitas Genre:** Content-based filtering cenderung merekomendasikan film dalam genre yang sama atau serupa, sementara collaborative filtering menunjukkan diversitas genre yang lebih tinggi dalam rekomendasinya.
 
-**2. Collaborative Filtering (CF)**
-*   **Kelebihan:**
-    *   Mampu **menangkap pola preferensi pengguna yang kompleks** yang tidak mudah dijelaskan hanya dari atribut konten.
-    *   Dapat merekomendasikan film yang **tidak terduga namun relevan** (*serendipity*), sehingga meningkatkan eksplorasi.
-    *   Memiliki **prediksi rating yang realistis**.
-    *   Mampu **menangkap selera komunitas** dan membantu eksplorasi genre yang belum dikenal.
-*   **Kekurangan:**
-    *   Mengalami **masalah *Cold Start***, yaitu kesulitan merekomendasikan item baru atau kepada pengguna baru karena kurangnya data interaksi.
-    *   Kinerja dapat menurun pada **dataset dengan sedikit interaksi pengguna-item** (*data sparsity*).
-    *   **Tidak sesuai untuk film yang jarang di-rating**.
+4. **Kualitas Prediksi:** Collaborative filtering memberikan prediksi rating yang lebih nuanced dan realistis, sementara content-based filtering fokus pada skor kemiripan konten yang lebih eksplisit.
 
-**Kesimpulan Evaluasi (Kualitatif)**
+# Evaluation
 
-Secara keseluruhan, kedua metode, *Content-Based Filtering* dan *Collaborative Filtering*, **saling melengkapi**. *Content-Based Filtering* ideal untuk pengguna baru atau ketika ingin merekomendasikan konten yang sangat spesifik, sementara *Collaborative Filtering* unggul dalam mengeksplorasi film populer di kalangan pengguna serupa, meskipun bisa lemah untuk pengguna dengan sedikit data. Untuk sistem rekomendasi yang robust, kombinasi atau pendekatan hibrida dari kedua metode ini seringkali menjadi solusi yang paling efektif (Catatan: Informasi ini adalah penjelasan umum tentang sistem rekomendasi dan tidak ada dalam sumber yang diberikan secara eksplisit, tetapi menyiratkan kesimpulan dari "saling melengkapi").
+Bagian ini bertujuan untuk **menyebutkan metrik evaluasi yang digunakan** dan **menjelaskan hasil proyek berdasarkan metrik evaluasi tersebut**. Metrik evaluasi yang dipilih harus **sesuai dengan konteks data, pernyataan masalah, dan solusi yang diinginkan**.
+
+## Metrik Evaluasi yang Digunakan
+
+Dalam proyek sistem rekomendasi ini, digunakan beberapa metrik evaluasi yang berbeda untuk mengukur kinerja kedua model, yaitu Content-Based Filtering dan Collaborative Filtering:
+
+### 1. Metrik untuk Content-Based Filtering
+
+**Precision@K**
+- **Formula**: Precision@K = (Jumlah item relevan dalam top-K rekomendasi) / K
+- **Cara kerja**: Mengukur proporsi item yang direkomendasikan dan benar-benar relevan (disukai) dari total K rekomendasi yang diberikan. Nilai berkisar antara 0-1, dimana 1 menunjukkan semua rekomendasi relevan.
+
+**Recall@K**
+- **Formula**: Recall@K = (Jumlah item relevan dalam top-K rekomendasi) / (Total item relevan yang tersedia)
+- **Cara kerja**: Mengukur proporsi item relevan yang berhasil ditangkap oleh sistem dari total item relevan yang sebenarnya disukai pengguna. Nilai berkisar antara 0-1, dimana 1 menunjukkan semua item relevan berhasil direkomendasikan.
+
+**F1-Score**
+- **Formula**: F1-Score = 2 × (Precision × Recall) / (Precision + Recall)
+- **Cara kerja**: Menggabungkan precision dan recall menjadi satu metrik harmonic mean, memberikan keseimbangan antara kedua metrik tersebut.
+
+### 2. Metrik untuk Collaborative Filtering
+
+**Root Mean Square Error (RMSE)**
+- **Formula**: RMSE = √(Σ(rating_prediksi - rating_aktual)² / n)
+- **Cara kerja**: Mengukur rata-rata kesalahan kuadrat antara rating yang diprediksi dengan rating aktual. Nilai RMSE yang lebih rendah menunjukkan prediksi yang lebih akurat.
+
+**Mean Absolute Error (MAE)**
+- **Formula**: MAE = Σ|rating_prediksi - rating_aktual| / n
+- **Cara kerja**: Mengukur rata-rata selisih absolut antara rating yang diprediksi dengan rating aktual. MAE lebih mudah diinterpretasi karena dalam skala yang sama dengan rating asli.
+
+## Hasil Evaluasi Model
+
+### Content-Based Filtering
+Berdasarkan evaluasi terhadap 50 pengguna dengan menggunakan top-10 rekomendasi:
+
+- **Precision@10**: 0.1080 (10.80%)
+  - Artinya dari 10 film yang direkomendasikan, rata-rata hanya 1.08 film yang benar-benar disukai pengguna
+- **Recall@10**: 0.0268 (2.68%)
+  - Artinya sistem hanya berhasil menangkap 2.68% dari total film yang sebenarnya disukai pengguna
+- **F1-Score**: 0.0429 (4.29%)
+  - Menunjukkan performa keseluruhan yang rendah dalam menyeimbangkan precision dan recall
+
+### Collaborative Filtering
+Berdasarkan 5-fold cross-validation:
+
+- **RMSE**: 0.8609 (±0.0043)
+  - Rata-rata kesalahan prediksi rating sebesar 0.86 pada skala rating (biasanya 1-5)
+  - Standar deviasi yang kecil (0.0043) menunjukkan konsistensi model
+- **MAE**: 0.6600 (±0.0033)
+  - Rata-rata selisih absolut prediksi rating sebesar 0.66
+  - Nilai ini lebih rendah dari RMSE, menunjukkan tidak banyak outlier dalam prediksi
+
+## Analisis Hasil Evaluasi
+
+**Content-Based Filtering** menunjukkan performa yang relatif rendah dalam metrik precision dan recall. Hal ini mengindikasikan bahwa model masih kesulitan dalam mengidentifikasi preferensi pengguna berdasarkan fitur konten film saja. Precision yang rendah (10.80%) menunjukkan banyak rekomendasi yang tidak relevan, sementara recall yang sangat rendah (2.68%) menunjukkan sistem gagal menangkap sebagian besar film yang sebenarnya disukai pengguna.
+
+**Collaborative Filtering** menunjukkan performa yang lebih baik dengan RMSE 0.86 dan MAE 0.66. Nilai-nilai ini cukup baik untuk prediksi rating, mengingat skala rating biasanya 1-5. Konsistensi yang tinggi (standar deviasi rendah) menunjukkan model yang stabil dan dapat diandalkan.
+
+## Perbandingan Metode Rekomendasi
+
+**Content-Based Filtering (CBF)**
+- **Kelebihan:**
+  - Cocok untuk pengguna baru (*new users*) karena tidak tergantung pada data pengguna lain
+  - Mampu menangkap preferensi konten spesifik dari pengguna
+  - Tidak terdampak *cold start* pada item baru
+- **Kekurangan:**
+  - Performa rendah berdasarkan metrik evaluasi (Precision@10: 10.80%, Recall@10: 2.68%)
+  - Kurang eksploratif, cenderung merekomendasikan film yang sangat mirip
+  - Rentan terhadap *overfitting* jika fitur konten kurang beragam
+
+**Collaborative Filtering (CF)**
+- **Kelebihan:**
+  - Performa prediksi yang baik (RMSE: 0.86, MAE: 0.66)
+  - Mampu menangkap pola preferensi pengguna yang kompleks
+  - Dapat memberikan rekomendasi yang tidak terduga namun relevan (*serendipity*)
+- **Kekurangan:**
+  - Mengalami masalah *Cold Start* untuk pengguna atau item baru
+  - Kinerja menurun pada dataset dengan interaksi yang jarang (*data sparsity*)
+
+## Kesimpulan Evaluasi
+
+Berdasarkan hasil evaluasi kuantitatif, **Collaborative Filtering menunjukkan performa yang lebih superior** dibandingkan Content-Based Filtering, terutama dalam hal akurasi prediksi rating. Namun, kedua metode memiliki karakteristik yang saling melengkapi. Content-Based Filtering unggul dalam menangani pengguna baru meskipun dengan akurasi yang rendah, sementara Collaborative Filtering memberikan prediksi yang lebih akurat tetapi lemah dalam menangani situasi *cold start*. 
+
+Untuk sistem rekomendasi yang robust, pendekatan hibrida yang menggabungkan kedua metode dapat menjadi solusi optimal untuk mengatasi kelemahan masing-masing dan memanfaatkan kelebihan keduanya.
