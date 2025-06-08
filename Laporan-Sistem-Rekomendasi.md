@@ -87,11 +87,13 @@ Sebelum analisis lebih lanjut, data telah melalui proses pembersihan dan pemfilt
 Analisis ini berfokus pada distribusi dan karakteristik masing-masing variabel secara terpisah:
 
 *   **Distribusi Genre Film**:
+    * ![Distribusi Genre Film](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/genre.png?raw=true)
     *   **Drama** adalah genre film yang paling banyak diproduksi, diikuti oleh **Comedy** dan **Thriller**. Hal ini mengindikasikan bahwa kedua genre tersebut sangat dominan dalam industri perfilman.
     *   Genre seperti Action, Romance, Crime, Adventure, dan Horror juga memiliki jumlah film yang cukup banyak, berkisar antara 1.000 hingga 2.000 film.
     *   Genre seperti Film-Noir, IMAX, Western, dan Musical memiliki jumlah film yang relatif sedikit (di bawah 500 film), kemungkinan karena pasar yang lebih spesifik atau *niche*.
 
 *   **Distribusi Tahun Rilis Film**:
+    * ![Distribusi Tahun Rilis Film](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/tahun.png?raw=true)
     *   Pada awal abad ke-20 (1900-1950), jumlah film yang dirilis masih sedikit dan mengalami pertumbuhan lambat.
     *   Setelah tahun 1950, terutama mulai 1970-an, terjadi peningkatan signifikan dalam jumlah film yang dirilis setiap tahunnya.
     *   Produksi film mencapai puncaknya pada rentang **1995-2010**, dengan sekitar 800-900 film per tahun.
@@ -99,38 +101,45 @@ Analisis ini berfokus pada distribusi dan karakteristik masing-masing variabel s
     *   Visualisasi ini membantu memahami evolusi industri film secara historis dan peran penting platform distribusi modern.
 
 *   **Distribusi Rating Film**:
+    * ![DistribusiRating Film](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/rating.png?raw=true)
     *   Rata-rata rating keseluruhan adalah sekitar **3.53**. Rating **4.0** adalah yang paling umum, dengan lebih dari 25.000 entri.
     *   Rating 3.0 dan 5.0 juga memiliki frekuensi tinggi.
     *   Mayoritas rating cenderung bersifat **positif** (antara 3 hingga 5), menunjukkan bahwa sebagian besar pengguna cukup puas dengan film yang mereka tonton.
 
 *   **Distribusi Jumlah Rating per Pengguna**:
+    * ![Distribusi Jumlah Rating per Pengguna](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/ratingperuser.png?raw=true)
     *   Rata-rata pengguna memberikan sekitar **147.99 rating**, dengan median 68 rating.
     *   Distribusi sangat **miring ke kanan (right-skewed)**, menunjukkan bahwa sebagian besar pengguna (lebih dari 250) memberikan kurang dari 50 rating, sementara ada beberapa **pengguna sangat aktif (power user)** yang memberikan rating ribuan film (outlier).
     *   Ini perlu menjadi perhatian khusus dalam pengembangan sistem rekomendasi berbasis kolaborasi, karena ketidakseimbangan kontribusi pengguna.
 
 *   **Distribusi Jumlah Rating per Film**:
+    * ![Distribusi Jumlah Rating per Film](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/ratingperfilm.png?raw=true)
     *   Rata-rata film menerima sekitar **24.73 rating**, dengan median 13 rating.
     *   Lebih dari 1.600 film menerima kurang dari 10 rating. Distribusi juga **miring ke kanan (right-skewed)**.
     *   Ini menunjukkan adanya **efek long-tail** pada dataset, di mana sebagian kecil film sangat populer dan menerima banyak rating, sementara sebagian besar film hanya memiliki sedikit data rating. Kondisi ini dapat berdampak pada akurasi model.
 
 *   **Distribusi Aktivitas Rating per Tahun**:
+    * ![Distribusi Aktivitas Rating per Tahun](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/ratingpertahun.png?raw=true)
     *   Aktivitas rating mencapai puncaknya pada tahun **2000 dan 2017**.
     *   Tren fluktuatif naik turun signifikan, menunjukkan adanya faktor perubahan platform, jumlah pengguna, atau perilaku pengguna.
     *   Dominasi tahun-tahun modern (2012-2017) kemungkinan terkait dengan peningkatan penggunaan internet dan layanan *streaming*.
 
 *   **Distribusi Jumlah Tag per Pengguna**:
+    * ![Distribusi Jumlah Tag per Pengguna](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/tagperuser.png?raw=true)
     *   Rata-rata pengguna memberikan sekitar **58 tag**, dengan median 4 tag.
     *   Distribusi sangat **miring ke kanan**, menunjukkan bahwa sebagian besar pengguna hanya memberikan sedikit tag.
     *   Ada pengguna outlier yang memberikan **1.507 tag**.
     *   Sebagian besar pengguna (75%) memberikan kurang dari 13 tag. Hal ini mengindikasikan bahwa sistem yang bergantung pada tag (misalnya Content-Based Filtering) mungkin kurang efektif bagi sebagian besar pengguna karena data tag yang sedikit.
 
 *   **Distribusi Jumlah Tag per Film**:
+    * ![Distribusi Jumlah Tag per Film](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/tagperfilm.png?raw=true)
     *   Rata-rata film menerima sekitar **2.34 tag**, dengan median 1 tag.
     *   **Mayoritas film hanya mendapatkan 1 atau 2 tag**.
     *   Distribusi tidak merata, dengan outlier (film yang menerima 181 tag).
     *   Aktivitas *tagging* terhadap film secara umum terbatas. Film dengan banyak tag dapat mengindikasikan keterlibatan atau daya tarik yang tinggi.
 
 *   **20 Tag Terpopuler**:
+    * ![20 Tag Terpopuler](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/tagpopular.png?raw=true)
     *   Tag **"In Netflix queue"** sangat dominan, menunjukkan banyak pengguna menggunakannya sebagai pengingat pribadi.
     *   Tag lain yang populer termasuk "atmospheric", "thought-provoking", dan "superhero", yang cenderung diminati pengguna.
     *   Beberapa tag bersifat deskriptif seperti "surreal", "dark comedy", dan "twist ending".
@@ -140,11 +149,13 @@ Analisis ini berfokus pada distribusi dan karakteristik masing-masing variabel s
 Analisis ini melihat hubungan antara dua atau lebih variabel:
 
 *   **Rata-rata Rating Film Berdasarkan Tahun Rilis**:
+    * ![Rata-rata Rating Film Berdasarkan Tahun Rilis](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/rataratatahunrilis.png?raw=true)
     *   Visualisasi menunjukkan **fluktuasi rata-rata rating film berdasarkan tahun rilis**, tanpa tren peningkatan atau penurunan yang jelas secara signifikan.
     *   Rating rata-rata cenderung lebih tinggi pada film-film yang dirilis pada awal abad ke-20 (sebelum 1940-an).
     *   Insight dari analisis ini adalah informasi tag sangat berharga untuk membangun sistem rekomendasi berbasis konten. Tren popularitas tag tertentu menunjukkan minat pengguna terhadap tema, genre, atau suasana film tertentu.
 
 *   **Jumlah Rating vs. Rata-rata Rating per Film**:
+    * ![Jumlah Rating vs. Rata-rata Rating per Film](https://github.com/irfnriza/simple-recomendation-system/blob/main/assets/ratingvsperfilm.png?raw=true)
     *   *Plot scatter* ini menunjukkan hubungan antara **jumlah rating yang diterima sebuah film dengan rata-rata rating** film tersebut.
     *   Banyak film memiliki **jumlah rating yang rendah (di bawah 20)**, namun menunjukkan **variasi rata-rata rating yang sangat tinggi** (dari 1 hingga hampir 5). Ini menunjukkan bahwa film-film tersebut sangat dipengaruhi oleh penilaian dari sedikit pengguna.
     *   Semakin tinggi jumlah rating, **rata-rata rating cenderung mengumpul di kisaran 3 hingga 4.5**, menandakan bahwa film dengan banyak penonton memiliki penilaian yang lebih stabil.
@@ -290,4 +301,5 @@ Kedua metode rekomendasi ini **saling melengkapi** dan memiliki karakteristik ya
     *   **Tidak sesuai untuk film yang jarang di-rating**.
 
 **Kesimpulan Evaluasi (Kualitatif)**
+
 Secara keseluruhan, kedua metode, *Content-Based Filtering* dan *Collaborative Filtering*, **saling melengkapi**. *Content-Based Filtering* ideal untuk pengguna baru atau ketika ingin merekomendasikan konten yang sangat spesifik, sementara *Collaborative Filtering* unggul dalam mengeksplorasi film populer di kalangan pengguna serupa, meskipun bisa lemah untuk pengguna dengan sedikit data. Untuk sistem rekomendasi yang robust, kombinasi atau pendekatan hibrida dari kedua metode ini seringkali menjadi solusi yang paling efektif (Catatan: Informasi ini adalah penjelasan umum tentang sistem rekomendasi dan tidak ada dalam sumber yang diberikan secara eksplisit, tetapi menyiratkan kesimpulan dari "saling melengkapi").
